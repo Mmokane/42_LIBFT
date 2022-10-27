@@ -6,7 +6,7 @@
 /*   By: mmokane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:31:06 by mmokane           #+#    #+#             */
-/*   Updated: 2022/10/26 18:46:32 by mmokane          ###   ########.fr       */
+/*   Updated: 2022/10/27 05:09:48 by mmokane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
 
 #endif
