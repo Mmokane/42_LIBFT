@@ -1,89 +1,37 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 
-int		ft_word_count(char const *s, char c)
+char* ft_strmapi(char const* s, char (*f)(unsigned int, char))
 {
-	int	i;
-	int	cnt;
+	size_t len;
+	size_t i;
+	char* str;
 
 	i = 0;
-	cnt = 0;
-	while (s[i])
+	if (!s || !f)
+		return (0);
+	len = ft_strlen(s);
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	while (i < len)
 	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			cnt++;
-			while (s[i] && s[i] != c)
-				i++;
-		}
-	}
-	return (cnt);
-}
-
-char	*ft_word_make(char *word, char const *s, int k, int word_len)
-{
-	int		i;
-
-	i = 0;
-	while (word_len > 0)
-		word[i++] = s[k - word_len--];
-	word[i] = '\0';
-	return (word);
-}
-
-char	**ft_split2(char **result, char const *s, char c, int word_num)
-{
-	int		i;
-	int		k;
-	int		word_len;
-
-	i = 0;
-	k = 0;
-	word_len = 0;
-	while (s[k] && i < word_num)
-	{
-		while (s[k] && s[k] == c)
-			k++;
-		while (s[k] && s[k] != c)
-		{
-			k++;
-			word_len++;
-		}
-		if (!(result[i] = (char *)malloc(sizeof(char) * (word_len + 1))))
-			return (NULL);
-		ft_word_make(result[i], s, k, word_len);
-		word_len = 0;
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	result[i] = 0;
-	return (result);
+	str[i] = '\0';
+	return (str);
+}
+char f(unsigned int i, char c)
+{
+	char str;
+	str = c + 1;
+	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+int main()
 {
-	int		word_num;
-	char	**result;
-
-	if (s == 0)
-		return (NULL);
-	word_num = ft_word_count(s, c);
-	if (!(result = (char **)malloc(sizeof(char *) * (word_num + 1))))
-		return (NULL);
-	ft_split2(result, s, c, word_num);
-	return (result);
-}
-int		main(void)
-{
-    const char str[] = "loubna, lqajba, lll, 1212";
-    char **s;
-    s = ft_split(str, ',');
-    int i = 0;
-    while (s[i] && i < 4)
-    {
-        printf("%s\n", s[i]);
-        i++;
-    }
+	char str1[] = "abc";
+	char *str2;
+	str2 = ft_strmapi(str1, *f);
+	printf("%s\n", str2);
 }
