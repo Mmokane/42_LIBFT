@@ -1,24 +1,13 @@
-void	fnc(unsigned int i, char *str)
-{
-	i = 0;
-	str[i] -= 32;
-}
+#include <stdio.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int main(void)
 {
-	unsigned int	i;
+FILE *fp; // Variable to represent open file
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
-}
+ fp = fopen("hello.txt", "r"); // Open file for reading
 
-int main()
-{
-	char str[] = "hhhhhhhhh";
-	ft_striteri(str, &fnc);
-	printf("%s\n", str);
+ int c = fgetc(fp); // Read a single character
+ printf("%c\n", c); // Print char to stdout
+
+ fclose(fp); // Close the file when done
 }
