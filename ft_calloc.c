@@ -6,7 +6,7 @@
 /*   By: mmokane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:26:41 by mmokane           #+#    #+#             */
-/*   Updated: 2022/10/26 18:26:43 by mmokane          ###   ########.fr       */
+/*   Updated: 2022/11/03 04:24:02 by mmokane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*tab;
 
 	tab = NULL;
-	if (size && count > UINT_MAX / size)
+	if (size && count > SIZE_MAX / size)
 		return (tab);
 	tab = malloc(count * size);
 	if (tab != NULL)

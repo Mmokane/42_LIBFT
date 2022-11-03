@@ -5,22 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmokane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 18:18:05 by mmokane           #+#    #+#             */
-/*   Updated: 2022/10/26 18:18:07 by mmokane          ###   ########.fr       */
+/*   Created: 2022/11/03 05:16:00 by mmokane           #+#    #+#             */
+/*   Updated: 2022/11/03 05:18:05 by mmokane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	i;
+	unsigned char	*p;
 
-	i = 0;
-	while (i < len)
-	{
-		*((char *)(b + i)) = (char)c;
-		i++;
-	}
+	p = (unsigned char *)b;
+	while (len-- > 0)
+		*p++ = (unsigned char)c;
 	return (b);
 }

@@ -39,7 +39,10 @@ char	*w_m(char *klma, char const *s, int j, int word_len)
 
 	i = 0;
 	while (word_len > 0)
-		klma[i++] = s[j - word_len--];
+	{
+		klma[i++] = s[j - word_len];
+		word_len--;
+	}
 	klma[i] = '\0';
 	return (klma);
 }
@@ -62,7 +65,7 @@ char	**words_len(char **result, char const *s, char c, int word_num)
 			j++;
 			word_len++;
 		}
-		result[i] = (char *)malloc(sizeof(char) * (word_len + 1));
+		result[i] = malloc(sizeof(char) * (word_len + 1));
 		if (!result[i])
 			return (NULL);
 		w_m(result[i], s, j, word_len);
@@ -81,7 +84,7 @@ char	**ft_split(char const *s, char c)
 	if (s == 0)
 		return (NULL);
 	word_num = w_c(s, c);
-	result = (char **)malloc(sizeof(char *) * (word_num + 1));
+	result = malloc(sizeof(char *) * (word_num + 1));
 	if (!result)
 		return (NULL);
 	words_len(result, s, c, word_num);

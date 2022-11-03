@@ -25,4 +25,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }
-// n - 1 to return the diff bet the target char not the next one 

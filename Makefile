@@ -26,13 +26,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+	ar rc ${NAME} ${OBJS}
 
 clean:
 	rm -rf ${OBJS}
